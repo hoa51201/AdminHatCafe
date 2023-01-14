@@ -1,0 +1,105 @@
+<section class="section">
+    <div class="card">
+
+        <section class="panel panel-default">
+            <div style="text-align: center; padding: 20px 0" class="panel-heading">
+                <h3 class="panel-title mg-auto font-italic"><u>Chi tiết hóa đơn</u></h3>
+            </div>
+            <div class="panel-body">
+                <form  id="form-1" class="form-horizontal" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="name" class="col-sm-3 control-label">Mã đơn hàng:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" [ngModel]="item?.bill_id" disabled id="name" name ="bill_id">
+                            <label class="text-danger form-message ml-2 mt-2"></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-3 control-label">Tên khách hàng:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" [ngModel]="item?.customer_name"disabled id="desc" name ="customer_name">
+                            <label class="text-danger form-message ml-2 mt-2"></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-3 control-label">Số điện thoại:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" [ngModel]="item?.customer_phone_number"disabled id="price" name ="customer_phone_number">
+                            <label class="text-danger form-message ml-2 mt-2"></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-3 control-label">Địa chỉ nhận:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" [ngModel]="item?.customer_address"disabled id="quantity" name ="customer_address">
+                            <label class="text-danger form-message ml-2 mt-2"></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-3 control-label">Email:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" [ngModel]="item?.customer_email"disabled id="unit" name ="customer_email">
+                            <label class="text-danger form-message ml-2 mt-2"></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-3 control-label">Ngày đặt:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" [ngModel]="item?.bills_sale_day"disabled id="unit" name ="bills_sale_day">
+                            <label class="text-danger form-message ml-2 mt-2"></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tech" class="col-sm-3 control-label">Tổng tiền của đơn hàng:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" [ngModel]="item?.bill_total"disabled id="unit" name ="bill_total">
+                            <label class="text-danger form-message ml-2 mt-2"></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tech" class="col-sm-3 control-label">Trạng thái:</label>
+                        <div class="col-sm-9">
+                            
+                            <select name="miselect" [(ngModel)]="item.bill_state" (change)="UpdateState(item)">
+                                <option [value]="item" *ngFor="let item of stateOptions">{{item}}</option>
+                            </select>
+                            <label class="text-danger form-message ml-2 mt-2"></label>
+                        </div>
+                    </div>
+                    <hr>
+                   
+                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                    <thead>
+                      <tr>
+                        <th>STT</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Thành tiền</th>
+                       
+                      </tr>
+                    </thead>
+                    <tbody style="text-align:center;">
+                      <tr *ngFor="let item of collection">
+                        <td>{{item?.index+1}}</td>
+                        <td>{{item?.bill_product_name}}</td>
+                        <td>{{item?.bill_product_prices | number}}</td>
+                        <td>{{item?.bill_product_quantity | number}}</td>
+                        <td>{{item?.bill_product_total | number}}</td>
+                       
+                      </tr>
+                    </tbody>
+                </table>
+                <!-- <button [disabled]="!done"class="btn btn-info " (click)="validate()">
+                    
+                    Lưu thông tin
+                </button> -->
+                </form>
+
+            </div>
+        </section>
+
+    </div>
+</section>  
+
+

@@ -1,0 +1,89 @@
+<div class="main-content ">
+    <div class="page-title">
+        <h3>Danh sách đơn hàng</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-left">
+                <li class="breadcrumb-item"><a href="#">Quản lý đơn hàng</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Dánh sách đơn hàng</li>
+            </ol>
+        </nav>
+    </div>
+    <section class="section">
+        <div class="card">
+            <div class=" card-header bg-white">
+                <u style="color: #0dcaf0; cursor: pointer;" class="font-italic"> Bảng danh sách đơn hàng</u>
+            </div>
+            
+            <div class="pt-0 card-body">
+                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                    <thead>
+                      <tr>
+                        <th>STT</th>
+                        <th>Người mua</th>
+                        <th>SĐT</th>
+                        <th>Ngày mua</th>
+                        <th>Số tiền</th>
+                        <th>Trạng thái</th>
+                        <th width="10%">
+                                Action
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of collection">
+                        <td>{{item.index+1}}</td>
+                        <td>{{item.customer_name}}</td>
+                        <td>{{item.customer_phone_number}}</td>
+                        <td>{{item.bills_sale_day}}</td>
+                        <td>{{item.bill_total | number}}</td>
+                        <td><button style="background-color: rgb(24, 141, 196);">{{item.bill_state}}</button></td>
+                        <td class="d-flex">
+                            
+                            <!-- <a [routerLink]="['/main/category/update/']+item.categories_slug+['/']+item.categories_id"> -->
+                            <a [routerLink]="['/main/bill/billdetails/']+item.bill_id">
+                                <div data-toggle="modal" data-target="#exampleModal" class="btn-trash mr-2">
+                                    <!-- <i class="btn btn-primary fas fa-check"></i> -->
+                                    <i class="btn btn-success fas fa-check"></i>
+                                </div>
+                            </a>
+                            <!-- <a href="">
+                                <div data-id="" data-toggle="modal" (click)="GetId(item.bill_id)"  data-target="#delete-cat-modal" class="btn-delete" href="">
+                                    <i class="btn btn-primary fas fa-truck"></i>
+                                    <i class="fas fa-truck-moving"></i> 
+                                </div>
+                            </a> -->
+                            <a href="">
+                                <div data-id="" data-toggle="modal" (click)="GetId(item.bill_id)"  data-target="#delete-cat-modal" class="btn-delete" href="">
+                                    <i class="btn btn-danger fas fa-trash-alt"></i>
+                                    <!-- <i class="fas fa-truck-moving"></i> -->
+                                </div>
+                            </a>    
+                                <!-- <i class=""></i> -->
+                        </td>
+                      </tr>
+                    </tbody>
+                </table>
+                  
+            </div>
+         </div>
+    
+        </section>
+</div>
+<div class="modal fade" id="delete-cat-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc chắn muốn xóa?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Sau khi xóa bạn không thể khôi phục lại.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary btn-cancel-logout" type="button" data-dismiss="modal">Đóng</button>
+                <button class="btn btn-danger" (click)="handleDelete()">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>

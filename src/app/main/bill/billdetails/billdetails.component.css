@@ -1,0 +1,52 @@
+#blah{
+    width: 10rem;
+    height: 10rem;
+}
+.spin-loader-screen{
+    position: fixed;
+    z-index: 999;
+    top:0;
+    height: 100vh;
+    width: 100%;
+    background: #2B3134;
+    margin-left: -15.5rem;
+    opacity: 0.5;
+}
+.spinner-border{
+    color: blue;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 999;
+    top: 40vh;
+    left: 50%;
+}
+.modal-load{
+    background: #2B3134;
+    color: #777;
+    position: fixed;
+    z-index: 9999;
+    height: 100vh;
+    width: 100vh;
+}
+.loader{
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    /* position: fixed; */
+    top: 0;
+    margin-left: -15.5rem;
+    text-align: center;
+  }
+  svg path,
+svg rect {
+  fill: #FF6700;
+  font-size: 20rem;
+}
+table, th, td{
+    border:1px solid black;
+ 
+}
+table{
+    border-collapse:collapse;
+}
